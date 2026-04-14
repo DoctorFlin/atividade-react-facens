@@ -12,12 +12,14 @@ function Calculator() {
   };
 
   const calculate = () => {
-    try {
-      setInput(eval(input).toString());
-    } catch {
-      setInput("Erro");
-    }
-  };
+  try {
+    // versão segura simples
+    const result = Function('"use strict"; return (' + input + ')')();
+    setInput(result.toString());
+  } catch {
+    setInput("Erro");
+  }
+};
 
   return (
     <div style={{ textAlign: "center" }}>
