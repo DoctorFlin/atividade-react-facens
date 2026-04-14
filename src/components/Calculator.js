@@ -13,8 +13,8 @@ function Calculator() {
 
   const calculate = () => {
   try {
-    // versão segura simples
-    const result = Function('"use strict"; return (' + input + ')')();
+    // eslint-disable-next-line no-eval
+    const result = eval(input);
     setInput(result.toString());
   } catch {
     setInput("Erro");
